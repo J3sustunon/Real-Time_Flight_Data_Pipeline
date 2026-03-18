@@ -21,6 +21,7 @@ In this project I implement a serverless data pipeline using AWS services to ing
   - [Future Improvements](#future-improvements)
 
 ## Architecture Overview
+<img width="1341" height="532" alt="Architecture " src="https://github.com/user-attachments/assets/e26cd28e-4d5a-4978-b147-c1dd27cc74bc" />
 
 ## Data Ingestion
 1. S3 Bucket Setup
