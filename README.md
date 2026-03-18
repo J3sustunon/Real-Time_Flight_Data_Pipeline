@@ -20,8 +20,6 @@ In this project I implement a serverless data pipeline using AWS services to ing
   - [Design Considerations](#design-considerations)
   - [Future Improvements](#future-improvements)
 
-## Table of Contents
-
 ## Architecture Overview
 
 ## Data Ingestion
