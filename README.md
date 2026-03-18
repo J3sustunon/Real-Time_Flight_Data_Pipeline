@@ -26,6 +26,7 @@ In this project I implement a serverless data pipeline using AWS services to ing
 ## Data Ingestion
 1. S3 Bucket Setup
    - Created an S3 bucket to store raw and processed flight arrival data.
+     
 2. AeroDataBox API
    
 4. AWS Lamda Function
@@ -57,8 +58,8 @@ Grafan setup:
 - Invoved generating access key that could be used by Grafana to access AWS
 - 
 
-## Arrivals by hour
-<img width="1137" height="671" alt="Screenshot 2026-03-18 at 3 30 15 PM" src="https://github.com/user-attachments/assets/ac6b6db2-2e50-4264-a131-bd4cf52452ca" />
+## Arrivals per hour
+<img width="1137" height="671" alt="Screenshot 2026-03-18 at 3 41 00 PM" src="https://github.com/user-attachments/assets/4fb4bb79-5a9d-4515-b42a-58993e6130ec" />
 
 ## Top 10 cities
 <img width="1144" height="671" alt="Screenshot 2026-03-18 at 2 56 32 PM" src="https://github.com/user-attachments/assets/69c24294-d930-4e08-92bf-c72833463d32" />
