@@ -32,14 +32,19 @@ In this project I implement a serverless data pipeline using AWS services to ing
 4. AWS Lamda Function
    - Python script used to trigger API call 
 
-### Historical Backfill Function
+### Hi
 
 ### Daily Ingestion
+- Retrieves daily data from AeroDataBox API and stores JSON files in S3.
+- Configured IAM role with AmazonS3FullAccess and AmazonKinesisFirehoseFullAccess.
 
 #### EventBridge Trigger
 - Used EventBridge Trigger to invoke the lambda function every 10 mintes. Providing up to date flight data. 
 
 #### Kinesis Firehose
+Buffers and streams data to S3 when either:
+5 MiB of data is received, or 10 seconds have passed.
+Configured to deliver streaming data into S3 path.
 
 #### CloudWatch Monitoring
 
@@ -54,9 +59,13 @@ In this project I implement a serverless data pipeline using AWS services to ing
 
 
 ## Data Visualization
-Grafan setup:
+Buffers and streams data to S3 when either:
+    5 MiB of data is received, or
+    60 seconds have passed.
+Configured to invoke the Lambda function and deliver streaming data into a nested S3 path.
+#### Grafan setup:
 - Invoved generating access key that could be used by Grafana to access AWS
-- 
+- SQL queries were written directly in the Grafana panel editor, leveraging Athena as the query engine over the Parquet production table
 
 ## Arrivals per hour
 <img width="1137" height="671" alt="Screenshot 2026-03-18 at 3 41 00 PM" src="https://github.com/user-attachments/assets/4fb4bb79-5a9d-4515-b42a-58993e6130ec" />
@@ -75,7 +84,7 @@ There is a high peak of arrivals around 11AM, suggesting a concentrated morning 
 #### Airline Population:
 
 - American Airlines dominates MIA arrivals, accounting for 56% of all tracked flights (136 of ~244 total)
-- This concentration is expected — Miami International Airport serves as a primary hub for American Airlines, making it one of the carrier's busiest gateways for both domestic and international operations, particularly for Latin America and the Caribbean routes
+- This concentration clearly shows how Miami International Airport serves as a primary hub for American Airlines, making it one of the carrier's busiest gateways for both domestic and international operations, particularly for Latin America and the Caribbean routes
 - The remaining 44% is distributed across 40+ carriers, reflecting MIA's role as a major international gateway with broad global connectivity
 
 #### Top 10 Origin Cities:
