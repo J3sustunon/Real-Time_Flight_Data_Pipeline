@@ -1,4 +1,4 @@
-# Real-Time-Flight-Data-Pipeline
+# Real-Time Flight Data Pipeline
 
 In this project I implement a serverless data pipeline using AWS services to ingest, transform, and visualize hourly flight data from Miami International Airport. It pulls data from the AeroDataBox API, which then enables querying through Athena and dashboarding with Grafana.
 
