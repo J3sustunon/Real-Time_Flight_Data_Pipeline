@@ -68,6 +68,20 @@ Grafan setup:
 <img width="1144" height="671" alt="Screenshot 2026-03-18 at 2 48 10 PM" src="https://github.com/user-attachments/assets/c4c48f17-c4f5-43c6-8a9f-acc47e21a6eb" />
 
 ### Analysis & Observations
+#### Arrivals by Interval:
+
+There is a high peak of arrivals around 11AM, suggesting a concentrated morning push typical of hub-and-spoke operations, where connecting flights are banked to maximize passenger transfer efficiency 
+
+#### Airline Population:
+
+- American Airlines dominates MIA arrivals, accounting for 56% of all tracked flights (136 of ~244 total)
+- This concentration is expected — Miami International Airport serves as a primary hub for American Airlines, making it one of the carrier's busiest gateways for both domestic and international operations, particularly for Latin America and the Caribbean routes
+- The remaining 44% is distributed across 40+ carriers, reflecting MIA's role as a major international gateway with broad global connectivity
+
+#### Top 10 Origin Cities:
+
+- The top 10 origin cities are dominated by major US Northeast and Southeast corridor hubs, with New York leading at 17 flights, followed by Washington, Atlanta, and Charlotte at 12 each
+- This distribution reinforces MIA's role as the primary southern gateway for East Coast travelers, with strong connectivity to major American Airlines hubs (Charlotte, Chicago, Washington) further reflecting the carrier's network concentration at MIA
 
 ## Troubleshooting & Testing
 
