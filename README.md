@@ -27,7 +27,8 @@ In this project I implement a serverless data pipeline using AWS services to ing
 1. S3 Bucket Setup
    - Created an S3 bucket to store raw and processed flight arrival data.
 2. AeroDataBox API
-3. AWS Lamda Function
+   
+4. AWS Lamda Function
    - Python script used to trigger API call 
 
 ### Historical Backfill Function
@@ -35,25 +36,35 @@ In this project I implement a serverless data pipeline using AWS services to ing
 ### Daily Ingestion
 
 #### EventBridge Trigger
-- Used EventBridge Trigger to invoke the lambda function every 10 mintes. In order to get fresh arrival data 
+- Used EventBridge Trigger to invoke the lambda function every 10 mintes. Providing up to date flight data. 
 
 #### Kinesis Firehose
 
 #### CloudWatch Monitoring
 
 ## Data Transformation
+1. AWS Glue Crawler
+   - This service was completly gamechnager. Automating the creation of my data and weaving everything together onto a table. 
+3. AWS Glue ETL Jobs
+4. AWS Glue Workflows (clear worflow -> write -> transform -> audit -> publish -> pattern)
+   
+<img width="1077" height="272" alt="Screenshot 2026-03-18 at 3 07 45 PM" src="https://github.com/user-attachments/assets/23704305-90dc-4633-b2f1-ffbd17b431ea" />
+<img width="1045" height="369" alt="Screenshot 2026-03-18 at 3 08 31 PM" src="https://github.com/user-attachments/assets/a9be2a58-8c46-4f8a-b7eb-32e19e179eb2" />
 
-### AWS Glue Crawler
-
-### AWS Glue ETL Jobs
-
-### AWS Glue Workflows (write - audit - publish - pattern)
 
 ## Data Visualization
 Grafan setup:
 - Invoved generating access key that could be used by Grafana to access AWS
 - 
-  
+
+## Arrivals by hour
+<img width="1137" height="671" alt="Screenshot 2026-03-18 at 3 30 15 PM" src="https://github.com/user-attachments/assets/ac6b6db2-2e50-4264-a131-bd4cf52452ca" />
+
+## Top 10 cities
+<img width="1144" height="671" alt="Screenshot 2026-03-18 at 2 56 32 PM" src="https://github.com/user-attachments/assets/69c24294-d930-4e08-92bf-c72833463d32" />
+
+## Flights per airline
+<img width="1144" height="671" alt="Screenshot 2026-03-18 at 2 48 10 PM" src="https://github.com/user-attachments/assets/c4c48f17-c4f5-43c6-8a9f-acc47e21a6eb" />
 
 ### Analysis & Observations
 
@@ -62,4 +73,6 @@ Grafan setup:
 ## Design Considerations
 
 ## Future Improvements
-
+Data Coverage
+- Lambda currently pulls a 12-hour rolling window per invocation, limiting historical depth
+Could be extended to a full 24-hour window or multi-invocation strategy to capture complete daily arrival patterns
