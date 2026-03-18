@@ -5,7 +5,7 @@ In this project I implement a serverless data pipeline using AWS services to ing
 - [Table of Contents](#table-of-contents)
   - [Architecture Overview](#architecture-overview)
   - [Data Ingestion](#data-ingestion)
-    - [Historical Backfill Function](#historical-backfill-function)
+    - [Lambda Function](lambda-function)
     - [Daily Ingestion](#daily-ingestion)
       - [EventBridge Trigger](#eventbridge-trigger)
       - [Kinesis Firehose](#kinesis-firehose)
@@ -37,6 +37,8 @@ In this project I implement a serverless data pipeline using AWS services to ing
 ### Daily Ingestion
 - Retrieves daily data from AeroDataBox API and stores JSON files in S3.
 - Configured IAM role with AmazonS3FullAccess and AmazonKinesisFirehoseFullAccess.
+
+#### Lamda Function
 
 #### EventBridge Trigger
 - Used EventBridge Trigger to invoke the lambda function every 10 mintes. Providing up to date flight data. 
