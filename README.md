@@ -32,8 +32,6 @@ In this project I implement a serverless data pipeline using AWS services to ing
 4. AWS Lamda Function
    - Python script used to trigger API call.
 
-### Hi
-
 ### Daily Ingestion
 - Retrieves daily data from AeroDataBox API and stores JSON files in S3.
 - Configured IAM role with AmazonS3FullAccess and AmazonKinesisFirehoseFullAccess.
