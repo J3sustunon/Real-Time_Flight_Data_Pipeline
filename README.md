@@ -30,7 +30,7 @@ In this project I implement a serverless data pipeline using AWS services to ing
 2. AeroDataBox API
    
 4. AWS Lamda Function
-   - Python script used to trigger API call 
+   - Python script used to trigger API call.
 
 ### Hi
 
@@ -64,8 +64,8 @@ Buffers and streams data to S3 when either:
     60 seconds have passed.
 Configured to invoke the Lambda function and deliver streaming data into a nested S3 path.
 #### Grafan setup:
-- Invoved generating access key that could be used by Grafana to access AWS
-- SQL queries were written directly in the Grafana panel editor, leveraging Athena as the query engine over the Parquet production table
+- Invoved generating access key that could be used by Grafana to access AWS.
+- SQL queries were written directly in the Grafana panel editor, leveraging Athena as the query engine over the Parquet production table.
 
 ## Arrivals per hour
 <img width="1137" height="671" alt="Screenshot 2026-03-18 at 3 41 00 PM" src="https://github.com/user-attachments/assets/4fb4bb79-5a9d-4515-b42a-58993e6130ec" />
@@ -79,18 +79,18 @@ Configured to invoke the Lambda function and deliver streaming data into a neste
 ### Analysis & Observations
 #### Arrivals by Interval:
 
-There is a high peak of arrivals around 11AM, suggesting a concentrated morning push typical of hub-and-spoke operations, where connecting flights are banked to maximize passenger transfer efficiency 
+There is a high peak of arrivals around 11AM, suggesting a concentrated morning, where connecting flights are probably banked to maximize passenger transfer efficiency.
 
 #### Airline Population:
 
-- American Airlines dominates MIA arrivals, accounting for 56% of all tracked flights (136 of ~244 total)
-- This concentration clearly shows how Miami International Airport serves as a primary hub for American Airlines, making it one of the carrier's busiest gateways for both domestic and international operations, particularly for Latin America and the Caribbean routes
-- The remaining 44% is distributed across 40+ carriers, reflecting MIA's role as a major international gateway with broad global connectivity
+- American Airlines dominates MIA arrivals, accounting for 56% of all tracked flights (136 of ~244 total, within a 12 hour)
+- This concentration clearly shows how Miami International Airport serves as a primary hub for American Airlines, making it one of the carrier's busiest gateways for both domestic and international operations, particularly for Latin America and the Caribbean routes.
+- The remaining 44% is distributed across 40+ carriers, reflecting MIA's role as a major international gateway with broad global connectivity.
 
 #### Top 10 Origin Cities:
 
-- The top 10 origin cities are dominated by major US Northeast and Southeast corridor hubs, with New York leading at 17 flights, followed by Washington, Atlanta, and Charlotte at 12 each
-- This distribution reinforces MIA's role as the primary southern gateway for East Coast travelers, with strong connectivity to major American Airlines hubs (Charlotte, Chicago, Washington) further reflecting the carrier's network concentration at MIA
+- The top 10 origin cities are dominated by major US Northeast and Southeast corridor hubs, with New York leading at 17 flights, followed by Washington, Atlanta, and Charlotte at 12 each.
+- This distribution reinforces MIA's role as the primary southern gateway for East Coast travelers, with strong connectivity to major American Airlines hubs (Charlotte, Chicago, Washington) further reflecting the carrier's network concentration at MIA.
 
 ## Troubleshooting & Testing
 
@@ -98,5 +98,5 @@ There is a high peak of arrivals around 11AM, suggesting a concentrated morning 
 
 ## Future Improvements
 Data Coverage
-- Lambda currently pulls a 12-hour rolling window per invocation, limiting historical depth
-Could be extended to a full 24-hour window or multi-invocation strategy to capture complete daily arrival patterns
+- Lambda currently pulls a 12-hour rolling window per invocation, limiting historical depth.
+Could be extended to a full 24-hour window or multi-invocation strategy to capture complete daily arrival patterns.
