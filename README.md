@@ -40,9 +40,7 @@ In this project I implement a serverless data pipeline using AWS services to ing
 
 #### EventBridge Trigger
 - Used EventBridge Trigger to invoke the lambda function every 10 mintes. Providing up to date flight data. 
-<img width="1191" height="385" alt="Screenshot 2026-03-18 at 1 19 41 PM" src="https://github.com/user-attachments/assets/833f818f-ec10-4d03-87ea-c1ea3a37c9b6" />
-<img width="1191" height="385" alt="Screenshot 2026-03-18 at 1 19 41 PM" src="https://github.com/user-attachments/assets/833f818f-ec10-4d03-87ea-c1ea3a37c9b6" />
-
+<img width="1191" height="385" alt="Screenshot 2026-03-18 at 1 19 41 PM" src="https://github.com/user-attachments/assets/833f818f-ec10-4d03-87ea-c1ea3a37c9b6" /> 
 
 #### Kinesis Firehose
 Buffers and streams data to S3 when either:
