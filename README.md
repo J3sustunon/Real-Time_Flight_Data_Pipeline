@@ -37,9 +37,10 @@ In this project I implement a serverless data pipeline using AWS services to ing
 - Configured IAM role with AmazonS3FullAccess and AmazonKinesisFirehoseFullAccess.
 
 #### Lamda Function
+AWS Lambda enables serverless, event-driven compute, eiminating the need to provision or manage infrastructure. Using Python, I scripted an extraction function that pulls real-time flight arrival data from the AeroDataBox API and pushes it downstream via Kinesis Firehose. The function is triggered automatically every hour through Amazon EventBridge, ensuring a continuously refreshed data feed.
 
 #### EventBridge Trigger
-- Used EventBridge Trigger to invoke the lambda function every 10 mintes. Providing up to date flight data. 
+Used EventBridge Trigger to invoke the lambda function every 10 mintes. Providing up to date flight data. 
 <img width="1191" height="385" alt="Screenshot 2026-03-18 at 1 19 41 PM" src="https://github.com/user-attachments/assets/833f818f-ec10-4d03-87ea-c1ea3a37c9b6" /> 
 
 #### Kinesis Firehose
@@ -48,21 +49,23 @@ Buffers and streams data to S3 when either:
 Configured to deliver streaming data into S3 path.
 
 #### CloudWatch Monitoring
+Incorporated real time email notification system to using CloudWatch, desinged to create an alaert in case of pipeline failure.
 
 ## Data Transformation
 1. AWS Glue Crawler
    - This service was completly gamechnager. Automating the creation of my data and weaving everything together onto a table. 
 3. AWS Glue ETL Jobs
-4. AWS Glue Workflows (clear worflow -> write -> transform -> audit -> publish -> pattern)
+   - Orchestration & Table Managemen: AWS Glue ETL Jobs are triggered automatically via Amazon EventBridge. Each run begins by dropping stale intermediate tables to prevent residual data from contaminating downstream transformations.
+   - Parquet Transformation & Delay Computation:Raw JSON is converted into a partitioned Parquet table, leveraging columnar storage for optimized Athena query performance. A delay column is computed during this step by calculating the difference between scheduled and actual arrival times.
+   - Data Quality & Production Publishing: The transformed table passes through a data quality check validating for null values before a wipe-and-reload publishes clean records into the production table, which serves as the single source of truth for the Grafana dashboard.
+   
+5. AWS Glue Workflows (clear worflow -> write -> transform -> audit -> publish -> pattern)
    
 <img width="1077" height="272" alt="Screenshot 2026-03-18 at 3 07 45 PM" src="https://github.com/user-attachments/assets/23704305-90dc-4633-b2f1-ffbd17b431ea" />
 <img width="1045" height="369" alt="Screenshot 2026-03-18 at 3 08 31 PM" src="https://github.com/user-attachments/assets/a2b79a27-f206-4a9d-8a60-8e936959489a" />
 
 ## Data Visualization
-Buffers and streams data to S3 when either:
-    5 MiB of data is received, or
-    60 seconds have passed.
-Configured to invoke the Lambda function and deliver streaming data into a nested S3 path.
+
 #### Grafan setup:
 - Invoved generating access key that could be used by Grafana to access AWS.
 - SQL queries were written directly in the Grafana panel editor, leveraging Athena as the query engine over the Parquet production table.
@@ -79,22 +82,23 @@ Configured to invoke the Lambda function and deliver streaming data into a neste
 ### Analysis & Observations
 #### Arrivals by Interval:
 
-There is a high peak of arrivals around 11AM, suggesting a concentrated morning, where connecting flights are probably banked to maximize passenger transfer efficiency.
+- There is a high peak of arrivals around 11AM, suggesting a concentrated morning, where connecting flights are probably banked to maximize passenger transfer efficiency.
 
 #### Airline Population:
-
 - American Airlines dominates MIA arrivals, accounting for 56% of all tracked flights (136 of ~244 total, within a 12 hour)
 - This concentration clearly shows how Miami International Airport serves as a primary hub for American Airlines, making it one of the carrier's busiest gateways for both domestic and international operations, particularly for Latin America and the Caribbean routes.
 - The remaining 44% is distributed across 40+ carriers, reflecting MIA's role as a major international gateway with broad global connectivity.
 
 #### Top 10 Origin Cities:
-
 - The top 10 origin cities are dominated by major US Northeast and Southeast corridor hubs, with New York leading at 17 flights, followed by Washington, Atlanta, and Charlotte at 12 each.
 - This distribution reinforces MIA's role as the primary southern gateway for East Coast travelers, with strong connectivity to major American Airlines hubs (Charlotte, Chicago, Washington) further reflecting the carrier's network concentration at MIA.
 
 ## Troubleshooting & Testing
+- Time window direction caused empty actual_arrival fields, the initial implementation fetched the next hour forward, pulling flights that hadn't landed yet. Flipping to a backwards window (and ultimately extending it) was required to consistently capture post-touchdown runwayTime data.
+-Codeshare contamination required an API swap, AviationStack returned duplicate records for alliance-shared flights with no native filter. Switching to AeroDataBox and enabling the withCodeshared=false query parameter eliminated the problem at the source, removing the need for post-ingestion deduplication logic on that specific issue.
 
 ## Design Considerations
+- A wipe-and-reload INSERT INTO strategy was implemented to flush stale records before each pipeline run, guaranteeing the production table always reflects a clean, deduplicated dataset for downstream reporting.
 
 ## Future Improvements
 Data Coverage
