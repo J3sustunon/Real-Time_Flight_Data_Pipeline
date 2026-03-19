@@ -58,7 +58,6 @@ Configured to deliver streaming data into S3 path.
 4. AWS Glue Workflows (clear worflow -> write -> transform -> audit -> publish -> pattern)
    
 <img width="1077" height="272" alt="Screenshot 2026-03-18 at 3 07 45 PM" src="https://github.com/user-attachments/assets/23704305-90dc-4633-b2f1-ffbd17b431ea" />
-<img width="1045" height="369" alt="Screenshot 2026-03-18 at 3 08 31 PM" src="https://github.com/user-attachments/assets/a9be2a58-8c46-4f8a-b7eb-32e19e179eb2" />
 
 
 ## Data Visualization
