@@ -66,7 +66,7 @@ Incorporated real time email notification system to using CloudWatch, desinged t
 
 ## Data Visualization
 
-#### Grafan setup:
+#### Grafana setup:
 - Invoved generating access key that could be used by Grafana to access AWS.
 - SQL queries were written directly in the Grafana panel editor, leveraging Athena as the query engine over the Parquet production table.
 
