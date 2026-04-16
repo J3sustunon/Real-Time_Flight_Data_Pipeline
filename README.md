@@ -95,7 +95,7 @@ Incorporated real time email notification system to using CloudWatch, desinged t
 
 ## Troubleshooting & Testing
 - Time window direction caused empty actual_arrival fields, the initial implementation fetched the next hour forward, pulling flights that hadn't landed yet. Flipping to a backwards window (and ultimately extending it) was required to consistently capture post-touchdown runwayTime data.
--Codeshare contamination required an API swap, AviationStack returned duplicate records for alliance-shared flights with no native filter. Switching to AeroDataBox and enabling the withCodeshared=false query parameter eliminated the problem at the source, removing the need for post-ingestion deduplication logic on that specific issue.
+- Codeshare contamination required an API swap, AviationStack returned duplicate records for alliance-shared flights with no native filter. Switching to AeroDataBox and enabling the withCodeshared=false query parameter eliminated the problem at the source, removing the need for post-ingestion deduplication logic on that specific issue.
 
 ## Design Considerations
 - A wipe-and-reload INSERT INTO strategy was implemented to flush stale records before each pipeline run, guaranteeing the production table always reflects a clean, deduplicated dataset for downstream reporting.
